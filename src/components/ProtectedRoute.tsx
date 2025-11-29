@@ -45,3 +45,4 @@ export const ProtectedRoute = ({ children, requiredUserType }: ProtectedRoutePro
   return <>{children}</>;
 };
 
+
