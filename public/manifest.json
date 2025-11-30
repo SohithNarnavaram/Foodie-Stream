@@ -1,0 +1,28 @@
+{
+  "name": "FoodieStream - Watch Live. Trust More.",
+  "short_name": "FoodieStream",
+  "description": "Watch your food being prepared live by verified vendors. Order street food with confidence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/image_2025-11-30_092714616-removebg-preview.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/image_2025-11-30_092714616-removebg-preview.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "shopping", "lifestyle"],
+  "screenshots": [],
+  "shortcuts": []
+}
+
