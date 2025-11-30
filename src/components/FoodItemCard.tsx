@@ -118,7 +118,7 @@ export const FoodItemCard = ({
     return (
       <Card
         className={cn(
-          "overflow-hidden border-0 shadow-food-card rounded-2xl bg-white cursor-pointer hover:shadow-food-card-hover transition-all duration-300 flex flex-col",
+          "overflow-hidden border-0 shadow-food-card rounded-2xl bg-white cursor-pointer hover:shadow-food-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col",
           className
         )}
         onClick={onClick}
@@ -212,7 +212,7 @@ export const FoodItemCard = ({
   return (
     <Card
       className={cn(
-        "overflow-hidden border-0 shadow-food-card rounded-2xl bg-white cursor-pointer hover:shadow-food-card-hover transition-all duration-300",
+        "overflow-hidden border-0 shadow-food-card rounded-2xl bg-white cursor-pointer hover:shadow-food-card-hover hover:-translate-y-1 transition-all duration-300",
         className
       )}
       onClick={onClick}

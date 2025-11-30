@@ -146,7 +146,7 @@ const Home = () => {
       bgColor: "bg-primary",
       gradientFrom: "from-primary",
       gradientTo: "to-orange-500",
-      onClick: () => navigate("/discover"),
+      onClick: () => navigate("/menu"),
     },
     {
       id: 2,
@@ -156,17 +156,17 @@ const Home = () => {
       bgColor: "bg-purple-500",
       gradientFrom: "from-purple-500",
       gradientTo: "to-purple-600",
-      onClick: () => navigate("/discover"),
+      onClick: () => navigate("/menu"),
     },
     {
       id: 3,
-      title: "Street Food Delights",
-      description: "Authentic flavors from local street vendors",
-      buttonText: "Explore Street Food",
-      bgColor: "bg-yellow-500",
-      gradientFrom: "from-yellow-500",
-      gradientTo: "to-yellow-600",
-      onClick: () => navigate("/street-explorer"),
+      title: "Bites",
+      description: "Short-form food videos & cooking content",
+      buttonText: "Watch Bites",
+      bgColor: "bg-[#90b437]",
+      gradientFrom: "from-[#90b437]",
+      gradientTo: "to-[#7a9a2e]",
+      onClick: () => navigate("/bites"),
     },
   ];
 
@@ -301,6 +301,8 @@ const Home = () => {
                           ? "text-primary"
                           : banner.bgColor === "bg-purple-500"
                           ? "text-purple-500"
+                          :                         banner.bgColor === "bg-[#90b437]"
+                          ? "text-[#90b437]"
                           : "text-yellow-500"
                       )}
                       onClick={banner.onClick}
@@ -418,15 +420,15 @@ const Home = () => {
             <Button 
               variant="ghost" 
               size="sm" 
-              onClick={() => navigate("/discover")}
+              onClick={() => navigate("/menu")}
               className="text-gray-600 font-medium"
             >
               View all
             </Button>
           </div>
           
-          <div className="grid grid-cols-2 gap-3">
-            {filteredStreams.filter(s => s.verified).slice(0, 2).map((stream) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {filteredStreams.filter(s => s.verified).slice(0, 4).map((stream) => (
               <FoodItemCard
                 key={stream.id}
                 id={stream.id}
@@ -550,9 +552,9 @@ const Home = () => {
             </Button>
           </div>
           
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex md:grid md:grid-cols-4 gap-4 overflow-x-auto md:overflow-x-visible pb-2 scrollbar-hide snap-x snap-mandatory">
             {liveStreams.filter(s => s.cuisine.toLowerCase().includes("street")).slice(0, 2).map((stream) => (
-              <div key={stream.id} className="min-w-[300px]">
+              <div key={stream.id} className="min-w-[300px] snap-start md:min-w-0 md:w-full">
                 <LiveCard
                   {...stream}
                   onClick={() => handleLiveCardClick(stream.id)}

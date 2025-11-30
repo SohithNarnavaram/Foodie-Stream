@@ -116,12 +116,12 @@ const Cart = () => {
                 variant="ghost"
                 size="sm"
                 className="text-primary font-medium"
-                onClick={() => navigate("/discover")}
+                onClick={() => navigate("/menu")}
               >
                 See all
               </Button>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {liveStreams.slice(0, 4).map((stream) => (
                 <FoodItemCard
                   key={stream.id}

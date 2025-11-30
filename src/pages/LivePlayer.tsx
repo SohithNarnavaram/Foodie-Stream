@@ -414,19 +414,19 @@ const LivePlayer = () => {
 
           {/* Mobile: Transparent Overlay Bottom Sheet */}
           <div 
-            className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-transparent rounded-t-2xl max-h-[60vh] flex flex-col pointer-events-none overflow-hidden"
+            className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-md rounded-t-2xl max-h-[70vh] flex flex-col pointer-events-none overflow-hidden border-t border-white/20"
             onWheel={(e) => e.stopPropagation()}
             onTouchMove={(e) => e.stopPropagation()}
           >
             <div 
-              className="flex-1 flex flex-col pt-4 pb-4 px-4 pointer-events-auto overflow-hidden"
+              className="flex-1 flex flex-col pt-4 pb-20 px-4 pointer-events-auto overflow-hidden"
               onWheel={(e) => e.stopPropagation()}
               onTouchMove={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h3 className="font-semibold text-white drop-shadow-lg">Live Chat</h3>
-                  <p className="text-xs text-white/70 drop-shadow">{chatMessages.length} messages</p>
+                  <h3 className="font-semibold text-white">Live Chat</h3>
+                  <p className="text-xs text-white/70">{chatMessages.length} messages</p>
                 </div>
                 <Button
                   variant="ghost"
@@ -439,46 +439,57 @@ const LivePlayer = () => {
               </div>
               
               <ScrollArea 
-                className="flex-1"
+                className="flex-1 min-h-0"
                 onWheel={(e) => e.stopPropagation()}
                 onTouchMove={(e) => e.stopPropagation()}
               >
-                <div className="space-y-2">
+                <div className="space-y-3 pr-2">
                   {chatMessages.map((msg) => (
                     <div 
                       key={msg.id} 
                       className=""
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <p className="font-medium text-xs text-primary drop-shadow-lg">{msg.username}</p>
-                        <p className="text-xs text-white/70 drop-shadow">
+                        <p className="font-medium text-xs text-primary">{msg.username}</p>
+                        <p className="text-xs text-white/70">
                           {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
-                      <p className="text-sm text-white drop-shadow-lg">{msg.message}</p>
+                      <p className="text-sm text-white">{msg.message}</p>
                     </div>
                   ))}
                   <div ref={chatEndRef} />
                 </div>
               </ScrollArea>
+            </div>
 
-              <div className="pt-4">
-                <div className="flex gap-2">
-                  <Input
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    placeholder="Type a message..."
-                    className="flex-1 bg-black/60 backdrop-blur-md border-white/20 text-white placeholder:text-white/60 rounded-full"
-                  />
-                  <Button 
-                    size="icon" 
-                    onClick={handleSendMessage}
-                    className="bg-primary hover:bg-primary/90 rounded-full"
-                  >
-                    <Send className="w-4 h-4" />
-                  </Button>
-                </div>
+            {/* Fixed Input Box at Bottom */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 p-4 bg-black/90 backdrop-blur-md border-t border-white/20 pointer-events-auto"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
+              <div className="flex gap-2">
+                <Input
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage();
+                    }
+                  }}
+                  placeholder="Type a message..."
+                  className="flex-1 bg-gray-900 border-gray-700 text-white placeholder:text-gray-500 focus:border-primary rounded-full h-11"
+                />
+                <Button 
+                  size="icon" 
+                  onClick={handleSendMessage}
+                  disabled={!newMessage.trim()}
+                  className="bg-primary hover:bg-primary/90 rounded-full h-11 w-11 flex-shrink-0"
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
               </div>
             </div>
           </div>

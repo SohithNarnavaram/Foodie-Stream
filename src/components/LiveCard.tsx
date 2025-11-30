@@ -27,7 +27,7 @@ export const LiveCard = ({
   return (
     <Card
       className={cn(
-        "relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-food-card-hover active:scale-[0.98] border-0 shadow-food-card rounded-2xl bg-white",
+        "relative overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-food-card-hover hover:-translate-y-1 active:scale-[0.98] border-0 shadow-food-card rounded-2xl bg-white",
         className
       )}
       onClick={onClick}

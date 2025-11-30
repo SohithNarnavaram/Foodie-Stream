@@ -9,7 +9,11 @@ import Home from "./pages/Home";
 import LivePlayer from "./pages/LivePlayer";
 import VendorProfile from "./pages/VendorProfile";
 import VendorDashboard from "./pages/VendorDashboard";
+import Menu from "./pages/Menu";
 import Discover from "./pages/Discover";
+import CategoryDetails from "./pages/CategoryDetails";
+import LiveStreamsFeed from "./pages/LiveStreamsFeed";
+import Bites from "./pages/Bites";
 import StreetExplorer from "./pages/StreetExplorer";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
@@ -286,7 +290,11 @@ const AppRoutes = () => {
         {/* Protected User Routes */}
         <Route path="/home" element={<ProtectedRoute requiredUserType="user"><Home /></ProtectedRoute>} />
         <Route path="/live/:id" element={<ProtectedRoute><LivePlayer /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute requiredUserType="user"><Menu /></ProtectedRoute>} />
         <Route path="/discover" element={<ProtectedRoute requiredUserType="user"><Discover /></ProtectedRoute>} />
+        <Route path="/category/:categoryId" element={<ProtectedRoute requiredUserType="user"><CategoryDetails /></ProtectedRoute>} />
+        <Route path="/live-streams-feed" element={<ProtectedRoute requiredUserType="user"><LiveStreamsFeed /></ProtectedRoute>} />
+        <Route path="/bites" element={<ProtectedRoute requiredUserType="user"><Bites /></ProtectedRoute>} />
         <Route path="/street-explorer" element={<ProtectedRoute requiredUserType="user"><StreetExplorer /></ProtectedRoute>} />
         <Route path="/cart" element={<ProtectedRoute requiredUserType="user"><Cart /></ProtectedRoute>} />
         <Route path="/order-tracking" element={<ProtectedRoute requiredUserType="user"><OrderTracking /></ProtectedRoute>} />
